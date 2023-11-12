@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "24344401666",
+    "project_id": "aojr-mobilepersistence-f9a8e",
+    "storage_bucket": "aojr-mobilepersistence-f9a8e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24344401666:android:47f636b1041c07606e141b",
+        "android_client_info": {
+          "package_name": "com.example.persistences_types_3aojr"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbM-z3E_ZtArKpcWRkK_CuJ5LRYU3dVCI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
