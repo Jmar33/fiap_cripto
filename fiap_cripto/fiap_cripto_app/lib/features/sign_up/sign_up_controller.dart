@@ -1,11 +1,17 @@
-import 'package:financy_app/features/sign_up/sign_up_state.dart';
-import 'package:financy_app/services/auth_service.dart';
 import 'package:flutter/foundation.dart';
+
+import '../../services/auth_service.dart';
+import '../../services/secure_storage.dart';
+import 'sign_up_state.dart';
 
 class SignUpController extends ChangeNotifier {
   final AuthService _service;
+  final SecureStorage _secureStorage;
 
-  SignUpController(this._service);
+  SignUpController(
+    this._service,
+    this._secureStorage,
+  );
 
   SignUpState _state = SignUpStateInitial();
 
@@ -24,13 +30,20 @@ class SignUpController extends ChangeNotifier {
     _changeState(SignUpStateLoading());
 
     try {
-      await _service.signUp(
+      final user = await _service.signUp(
         name: name,
         email: email,
         password: password,
       );
-
-      _changeState(SignUpStateSuccess());
+      if (user.id != null) {
+        await _secureStorage.write(
+          key: "CURRENT_USER",
+          value: user.toJson(),
+        );
+        _changeState(SignUpStateSuccess());
+      } else {
+        throw Exception();
+      }
     } catch (e) {
       _changeState(SignUpStateError(e.toString()));
     }

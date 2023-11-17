@@ -2,7 +2,6 @@ import 'package:financy_app/common/models/user_model.dart';
 import 'package:financy_app/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-
 class FirebaseAuthService implements AuthService {
   final _auth = FirebaseAuth.instance;
 
@@ -55,6 +54,15 @@ class FirebaseAuthService implements AuthService {
       }
     } on FirebaseAuthException catch (e) {
       throw e.message ?? "null";
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> signOut() async {
+    try {
+      await _auth.signOut();
     } catch (e) {
       rethrow;
     }
