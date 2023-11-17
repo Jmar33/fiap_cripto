@@ -1,4 +1,4 @@
-package com.example.fiap_cripto_app
+package mba.fiap.fiap_cripto
 
 import io.flutter.embedding.android.FlutterActivity
 

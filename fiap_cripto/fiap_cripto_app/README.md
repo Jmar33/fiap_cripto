@@ -1,4 +1,4 @@
-# fiap_cripto_app
+# financy_app
 
 A new Flutter project.
 
