@@ -22,7 +22,7 @@ class AppColors {
   static const Color lightGrey = Color(0xFFAAAAAA);
   static const Color error = Color(0xFFF44336);
   static const Color pink = Color(0xFFED145B);
-  static const Color darkGreen = Color(0xFF2F7E79);
+  static const Color darkPink = Color.fromARGB(255, 153, 28, 70);
   static const Color income = Color(0xFF25A969);
   static const Color outcome = Color(0xFFF95B51);
   static const Color notification = Color(0xFFFFAB7B);
