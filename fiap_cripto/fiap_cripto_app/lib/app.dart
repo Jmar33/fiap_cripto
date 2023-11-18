@@ -1,3 +1,5 @@
+import 'package:financy_app/common/models/transaction_model.dart';
+import 'package:financy_app/features/transactions/transaction_page.dart';
 import 'package:flutter/material.dart';
 
 import 'common/constants/routes.dart';
@@ -27,6 +29,12 @@ class App extends StatelessWidget {
         NamedRoute.stats: (context) => const StatsPage(),
         NamedRoute.wallet: (context) => const WalletPage(),
         NamedRoute.profile: (context) => const ProfilePage(),
+        NamedRoute.transaction: (context) {
+          final args = ModalRoute.of(context)?.settings.arguments;
+          return TransactionPage(
+            transaction: args != null ? args as TransactionModel : null,
+          );
+        },
       },
     );
   }

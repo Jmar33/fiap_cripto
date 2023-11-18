@@ -1,3 +1,5 @@
+import 'package:financy_app/features/home/widgets/balance_card/balance_card_widget_controller.dart';
+import 'package:financy_app/features/transactions/transaction_controller.dart';
 import 'package:get_it/get_it.dart';
 
 import 'features/home/home_controller.dart';
@@ -39,4 +41,18 @@ void setupDependencies() {
 
   locator.registerLazySingleton<HomeController>(
       () => HomeController(locator.get<TransactionRepository>()));
+
+
+  locator.registerLazySingleton<BalanceCardWidgetController>(
+    () => BalanceCardWidgetController(
+      transactionRepository: locator.get<TransactionRepository>(),
+    ),
+  );
+
+  locator.registerFactory<TransactionController>(
+    () => TransactionController(
+      repository: locator.get<TransactionRepository>(),
+      storage: const SecureStorage(),
+    ),
+  );
 }

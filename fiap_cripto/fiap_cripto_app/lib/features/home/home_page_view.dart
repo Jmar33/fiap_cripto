@@ -1,5 +1,6 @@
-import 'dart:developer';
-
+import 'package:financy_app/features/home/home_controller.dart';
+import 'package:financy_app/features/home/widgets/balance_card/balance_card_widget_controller.dart';
+import 'package:financy_app/locator.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/constants/app_colors.dart';
@@ -17,14 +18,20 @@ class HomePageView extends StatefulWidget {
 }
 
 class _HomePageViewState extends State<HomePageView> {
-  final pageController = PageController();
+  final homeController = locator.get<HomeController>();
+  final balanceController = locator.get<BalanceCardWidgetController>();
 
   @override
   void initState() {
+    homeController.setPageController = PageController();
     super.initState();
-    pageController.addListener(() {
-      log(pageController.page.toString());
-    });
+  }
+
+  @override
+  void dispose() {
+    homeController.dispose();
+    balanceController.dispose();
+    super.dispose();
   }
 
   @override
@@ -32,7 +39,7 @@ class _HomePageViewState extends State<HomePageView> {
     return Scaffold(
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
-        controller: pageController,
+        controller: homeController.pageController,
         children: const [
           HomePage(),
           StatsPage(),
@@ -42,7 +49,13 @@ class _HomePageViewState extends State<HomePageView> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.pink,
-        onPressed: () {},
+        onPressed: () async{
+          final result = await Navigator.pushNamed(context, '/transaction');
+          if (result != null) {
+            homeController.getAllTransactions();
+            balanceController.getBalances();
+          }
+        },
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -53,7 +66,7 @@ class _HomePageViewState extends State<HomePageView> {
             label: 'home',
             primaryIcon: Icons.home,
             secondaryIcon: Icons.home_outlined,
-            onPressed: () => pageController.jumpToPage(
+            onPressed: () =>  homeController.pageController.jumpToPage(
               0,
             ),
           ),
@@ -61,7 +74,7 @@ class _HomePageViewState extends State<HomePageView> {
             label: 'stats',
             primaryIcon: Icons.analytics,
             secondaryIcon: Icons.analytics_outlined,
-            onPressed: () => pageController.jumpToPage(
+            onPressed: () => homeController.pageController.jumpToPage(
               1,
             ),
           ),
@@ -70,7 +83,7 @@ class _HomePageViewState extends State<HomePageView> {
             label: 'wallet',
             primaryIcon: Icons.account_balance_wallet,
             secondaryIcon: Icons.account_balance_wallet_outlined,
-            onPressed: () => pageController.jumpToPage(
+            onPressed: () => homeController.pageController.jumpToPage(
               2,
             ),
           ),
@@ -78,7 +91,7 @@ class _HomePageViewState extends State<HomePageView> {
             label: 'profile',
             primaryIcon: Icons.person,
             secondaryIcon: Icons.person_outline,
-            onPressed: () => pageController.jumpToPage(
+            onPressed: () => homeController.pageController.jumpToPage(
               3,
             ),
           ),
