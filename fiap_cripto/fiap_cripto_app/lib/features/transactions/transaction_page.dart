@@ -239,26 +239,7 @@ class _TransactionPageState extends State<TransactionPage>
                         controller: _priceController,
                         keyboardType: TextInputType.number,
                         labelText: "Preço",
-                        hintText: "Digite a cotação na data da compra",
-                        suffixIcon: StatefulBuilder(
-                          builder: (context, setState) {
-                            return IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  value = !value;
-                                });
-                              },
-                              icon: AnimatedContainer(
-                                transform: value
-                                    ? Matrix4.rotationX(math.pi * 2)
-                                    : Matrix4.rotationX(math.pi),
-                                transformAlignment: Alignment.center,
-                                duration: const Duration(milliseconds: 200),
-                                child: const Icon(Icons.thumb_up_alt_rounded),
-                              ),
-                            );
-                          },
-                        ),
+                        hintText: "Digite a cotação na data da compra"
                       ),
 
 
@@ -326,9 +307,9 @@ class _TransactionPageState extends State<TransactionPage>
                                 Navigator.pop(context);
                                 return;
                               }
-                              if (widget.transaction != null) {
+                              if (widget.transaction != null ) {
                                 await _transactionController
-                                    .updateTransaction(newTransaction);
+                                    .updateTransaction(newTransaction, widget.transaction!.id);
                                 if (mounted) {
                                   Navigator.pop(context, true);
                                 }

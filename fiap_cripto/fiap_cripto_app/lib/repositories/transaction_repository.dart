@@ -14,6 +14,7 @@ abstract class TransactionRepository {
 
   Future<bool> updateTransaction(
     TransactionModel transactionModel,
+    String userId
   );
 
   Future<BalancesModel> getBalances();
@@ -91,12 +92,17 @@ class TransactionRepositoryImpl implements TransactionRepository {
   @override
   Future<bool> updateTransaction(
     TransactionModel transaction,
+    String id
   ) async {
     try {
 
-      transactions[transactions.indexWhere((transactionInList) => transactionInList.id == transaction.id)] = transaction;
-      
-      return true;
+      if(id != null && id != ""){
+        transactions[transactions.indexWhere((transactionInList) => transactionInList.id == id)] = transaction;
+        return true;
+      }
+
+      return false;
+
       
       
     } catch (e) {

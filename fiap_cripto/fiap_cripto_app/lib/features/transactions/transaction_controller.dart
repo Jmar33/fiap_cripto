@@ -43,10 +43,11 @@ class TransactionController extends ChangeNotifier {
     }
   }
 
-  Future<void> updateTransaction(TransactionModel transaction) async {
+  Future<void> updateTransaction(TransactionModel transaction, String? userId) async {
     _changeState(TransactionStateLoading());
     try {
-      final result = await repository.updateTransaction(transaction);
+
+      final result = await repository.updateTransaction(transaction, userId ?? "");
 
       if (result) {
         _changeState(TransactionStateSuccess());
