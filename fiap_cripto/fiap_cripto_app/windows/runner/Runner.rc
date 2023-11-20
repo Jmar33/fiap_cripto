@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "fiap_cripto_app" "\0"
+            VALUE "CompanyName", "dev.kaio.financy" "\0"
+            VALUE "FileDescription", "financy_app" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "fiap_cripto_app" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "fiap_cripto_app.exe" "\0"
-            VALUE "ProductName", "fiap_cripto_app" "\0"
+            VALUE "InternalName", "financy_app" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2022 dev.kaio.financy. All rights reserved." "\0"
+            VALUE "OriginalFilename", "financy_app.exe" "\0"
+            VALUE "ProductName", "financy_app" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

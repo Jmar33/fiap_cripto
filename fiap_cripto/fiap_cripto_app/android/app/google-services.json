@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "130973043626",
+    "project_id": "fiap-cripto",
+    "storage_bucket": "fiap-cripto.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130973043626:android:610d96b8c3b9d0391679d3",
+        "android_client_info": {
+          "package_name": "dev.kaio.financy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqSHobgWq2H6etIE3vGubwQ5FuLRfVlO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130973043626:android:88d89fc8ded9138c1679d3",
+        "android_client_info": {
+          "package_name": "mba.fiap.fiap_cripto"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqSHobgWq2H6etIE3vGubwQ5FuLRfVlO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
