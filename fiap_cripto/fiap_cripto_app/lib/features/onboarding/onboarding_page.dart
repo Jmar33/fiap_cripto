@@ -49,22 +49,22 @@ class OnboardingPage extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(
                   context,
-                  NamedRoute.signUp,
+                  NamedRoute.signIn,
                 );
               },
             ),
           ),
           MultiTextButton(
-            onPressed: () => Navigator.pushNamed(context, NamedRoute.signIn),
+            onPressed: () => Navigator.pushNamed(context, NamedRoute.signUp),
             children: [
               Text(
-                'Já possui uma conta',
+                'Ainda não possui uma conta? ',
                 style: AppTextStyles.smallText.copyWith(
                   color: AppColors.grey,
                 ),
               ),
               Text(
-                'Entrar ',
+                'Cadastrar ',
                 style: AppTextStyles.smallText.copyWith(
                   color: AppColors.pinkOne,
                 ),

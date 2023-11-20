@@ -45,28 +45,27 @@ class _SignUpPageState extends State<SignUpPage> {
   void initState() {
     super.initState();
     _controller.addListener(
-      () {
-        if (_controller.state is SignUpStateLoading) {
-          showDialog(
-            context: context,
-            builder: (context) => const CustomCircularProgressIndicator(),
-          );
-        }
-        if (_controller.state is SignUpStateSuccess) {
-          Navigator.pop(context);
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const Scaffold(
-                body: Center(
-                  child: Text("Nova Tela"),
-                ),
-              ),
-            ),
-          );
-        }
+      _handleSignUpstateChange
+    );
+  }
 
-        if (_controller.state is SignUpStateError) {
+  void _handleSignUpstateChange() {
+    final state = _controller.state;
+    switch (state.runtimeType) {
+      case SignUpStateLoading:
+        showDialog(
+          context: context,
+          builder: (context) => const CustomCircularProgressIndicator(),
+        );
+        break;
+      case SignUpStateSuccess:
+        Navigator.pop(context);
+        Navigator.pushReplacementNamed(
+          context,
+          NamedRoute.home,
+        );
+        break;
+      case SignUpStateError:
           final error = _controller.state as SignUpStateError;
           Navigator.pop(context);
           customModalBottomSheet(
@@ -74,9 +73,8 @@ class _SignUpPageState extends State<SignUpPage> {
             content: error.message,
             buttonText: "Tentar novamente",
           );
-        }
-      },
-    );
+        break;
+    }
   }
 
   @override
